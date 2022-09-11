@@ -1,58 +1,35 @@
-// import { createTheme, CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
-import React from 'react'
-import Footer from './Footer'
-import Navbar from './Navbar'
-
-export enum ColorMode {
-  LIGHT = 'light',
-  DARK = 'dark'
-}
+import { ThemeProvider } from "@emotion/react";
+import { useMediaQuery, PaletteMode, createTheme, CssBaseline } from "@mui/material";
+import React from "react";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Layout = (props: Props) => {
-  // const userPrefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  // console.log(userPrefersDarkMode)
-  // const [mode, setMode] = React.useState<ColorMode>(ColorMode.LIGHT);
+  const userDarkModePreference: boolean = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState<PaletteMode>(userDarkModePreference ? "dark" : "light");
 
-  // const toggleColorMode = () => {
-  //   setMode((prevMode) => (prevMode === ColorMode.LIGHT ? ColorMode.DARK : ColorMode.LIGHT));
-  //   return mode
-  // }
-
-  // const theme = React.useMemo(
-  //   () =>
-  //     createTheme({
-  //       palette: {
-  //         mode,
-  //       },
-  //       breakpoints: {
-  //         values: {
-  //           xs: 0,
-  //           sm: 600,
-  //           md: 900,
-  //           lg: 1200,
-  //           xl: 1536,
-  //         },
-  //       }
-  //     }),
-  //   [mode],
-  // );
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
 
   return (
-    // <ThemeProvider theme={theme}>
-    //   <CssBaseline />
-    <>
-      <Navbar toggleColorMode={() => { }} />
-      <div className='content'>
-        {props.children}
-      </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Navbar colorModeState={[mode, setMode]} />
+      {props.children}
       <Footer />
-    </>
-    // </ThemeProvider>
-  )
-}
+    </ThemeProvider>
+  );
+};
 
-export default Layout
+export default Layout;
