@@ -1,35 +1,43 @@
-import { FormGroup, FormControlLabel, useTheme, Typography, Switch, Box, PaletteMode } from "@mui/material";
-import { Link } from "gatsby";
+import { Box, Button, Container } from "@mui/material";
+import { navigate } from "gatsby";
+
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import React, { FC } from "react";
+import Logo from "../images/svg/logo";
+import { StyledNavbarLink, theme } from "../theme";
+import LanguageSelector from "./LanguageSelector";
 
-type NavbarProps = {
-  colorModeState: [PaletteMode, React.Dispatch<React.SetStateAction<PaletteMode>>];
-};
-
-const Navbar: FC<NavbarProps> = ({ colorModeState }) => {
-  const theme = useTheme();
-  const [colorMode, setColorMode] = colorModeState;
+const Navbar: FC = () => {
+  const { t } = useTranslation();
 
   return (
-    <Box component="nav" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <Typography variant="h3" sx={{ fontSize: theme.typography.h4 }}>
-        Digital Recruit
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <FormGroup>
-          <FormControlLabel control={<Switch checked={colorMode === "dark"} onChange={() => setColorMode((prevMode) => (prevMode === "light" ? "dark" : "light"))} />} label="Dark Mode" />
-        </FormGroup>
-      </Box>
+    <Box sx={{ backgroundColor: theme.palette.secondary.main }}>
+      <Container component="nav" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Logo width={130} height={70} />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <StyledNavbarLink to="/">{t("Home")}</StyledNavbarLink>
+          <StyledNavbarLink to="/about">{t("About")}</StyledNavbarLink>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <Button variant="contained" onClick={() => navigate("/contact")}>
+            {t("Contact")}
+          </Button>
+          <Button variant="contained">{t("Job Board")}</Button>
+          <LanguageSelector />
+        </Box>
+      </Container>
     </Box>
   );
 };

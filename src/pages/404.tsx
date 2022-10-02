@@ -1,20 +1,20 @@
-import * as React from "react"
-import { Link, HeadFC } from "gatsby"
+import * as React from "react";
+import { Link, HeadFC, graphql } from "gatsby";
 
 const pageStyles = {
   color: "#232129",
   padding: "96px",
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
+};
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
   maxWidth: 320,
-}
+};
 
 const paragraphStyles = {
   marginBottom: 48,
-}
+};
 
 const NotFoundPage = () => {
   return (
@@ -27,9 +27,22 @@ const NotFoundPage = () => {
         <Link to="/">Go home</Link>.
       </p>
     </main>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = () => <title>Not found</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
