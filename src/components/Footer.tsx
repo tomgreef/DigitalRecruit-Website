@@ -2,7 +2,7 @@ import { Box, Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { StyledFooterLink } from "../theme";
+import { StyledFooterLink, theme } from "../theme";
 
 // TODO: Add pages to missing links
 
@@ -30,7 +30,7 @@ const Footer: FC = () => {
   return (
     <Box>
       <Container component="footer" sx={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Grid container className={classes.column} component="nav">
+        <Grid container direction="column" gap={theme.spacing(2)}>
           <Grid item className={classes.category}>
             {t("Company")}
           </Grid>
@@ -40,7 +40,7 @@ const Footer: FC = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.column}>
+        <Grid container direction="column" gap={theme.spacing(2)}>
           <Grid item className={classes.category}>
             {t("Social")}
           </Grid>
@@ -50,7 +50,7 @@ const Footer: FC = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container className={classes.column}>
+        <Grid container direction="column" gap={theme.spacing(2)}>
           <Grid item className={classes.category}>
             {t("Legal")}
           </Grid>
@@ -66,7 +66,6 @@ const Footer: FC = () => {
 };
 const useStyles = makeStyles({
   category: { marginBottom: 8, fontWeight: "bold" },
-  column: { flexDirection: "column", gap: 16 },
 });
 
 export default Footer;

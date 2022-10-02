@@ -22,7 +22,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/logo.png",
+        icon: "src/images/logo.svg",
       },
     },
     "gatsby-plugin-sharp",
@@ -71,6 +71,14 @@ const config: GatsbyConfig = {
             languages: ["en"],
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/assets/`,
+        },
       },
     },
   ],
