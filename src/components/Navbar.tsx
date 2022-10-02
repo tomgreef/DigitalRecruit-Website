@@ -1,6 +1,5 @@
 import { Box, Button, Container } from "@mui/material";
 import { navigate } from "gatsby";
-
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import React, { FC } from "react";
 import Logo from "../images/svg/logo";

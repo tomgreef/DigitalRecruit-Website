@@ -3,18 +3,17 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Digital Recruit`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.digitalrecruit.es`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
-  graphqlTypegen: true,
+  // graphqlTypegen: true,
   plugins: [
-    `gatsby-plugin-material-ui`,
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "3976642545",
+        trackingId: "G-49SHQFMTXZ",
       },
     },
     "gatsby-plugin-image",
@@ -33,7 +32,6 @@ const config: GatsbyConfig = {
         name: "images",
         path: `${__dirname}/src/images/`,
       },
-      __key: "images",
     },
     {
       resolve: `gatsby-source-filesystem`,
