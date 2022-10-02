@@ -10,6 +10,13 @@ const Contact = () => {
   );
 };
 
+export const Head = () => (
+  <>
+    <title>Contact Us - Digital Recruit</title>
+    <meta name="description" content="Your description" />
+  </>
+);
+
 export default Contact;
 export const query = graphql`
   query ($language: String!) {

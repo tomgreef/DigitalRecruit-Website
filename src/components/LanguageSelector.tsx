@@ -1,9 +1,8 @@
-import { Button, FormControl, InputLabel, ListItemIcon, ListItemText, Menu, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18next } from "gatsby-plugin-react-i18next";
-import { graphql } from "gatsby";
 
 const LanguageSelector: FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

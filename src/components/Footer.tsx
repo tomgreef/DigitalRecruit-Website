@@ -1,5 +1,4 @@
 import { Box, Container, Grid } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { StyledFooterLink, theme } from "../theme";
@@ -24,14 +23,13 @@ const LEGAL_ROUTES = [
 ];
 
 const Footer: FC = () => {
-  const classes = useStyles();
   const { t } = useTranslation();
 
   return (
     <Box>
       <Container component="footer" sx={{ display: "flex", justifyContent: "space-evenly" }}>
         <Grid container direction="column" gap={theme.spacing(2)}>
-          <Grid item className={classes.category}>
+          <Grid item sx={category}>
             {t("Company")}
           </Grid>
           {COMPANY_ROUTES.map((route) => (
@@ -41,7 +39,7 @@ const Footer: FC = () => {
           ))}
         </Grid>
         <Grid container direction="column" gap={theme.spacing(2)}>
-          <Grid item className={classes.category}>
+          <Grid item sx={category}>
             {t("Social")}
           </Grid>
           {SOCIAL_ROUTES.map((route) => (
@@ -51,7 +49,7 @@ const Footer: FC = () => {
           ))}
         </Grid>
         <Grid container direction="column" gap={theme.spacing(2)}>
-          <Grid item className={classes.category}>
+          <Grid item sx={category}>
             {t("Legal")}
           </Grid>
           {LEGAL_ROUTES.map((route) => (
@@ -64,8 +62,7 @@ const Footer: FC = () => {
     </Box>
   );
 };
-const useStyles = makeStyles({
-  category: { marginBottom: 8, fontWeight: "bold" },
-});
+
+const category = { marginBottom: 8, fontWeight: "bold" };
 
 export default Footer;
