@@ -3,6 +3,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import { theme } from "../theme";
 
 const LanguageSelector: FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,7 +22,7 @@ const LanguageSelector: FC = () => {
 
   return (
     <>
-      <Button onClick={handleIconClick} sx={{ minWidth: 0, paddingRight: 0, paddingLeft: 0 }}>
+      <Button onClick={handleIconClick} sx={{ minWidth: 0, paddingRight: 0, paddingLeft: 0, color: theme.palette.primary.main }}>
         <LanguageIcon fontSize="large" />
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>

@@ -5,8 +5,8 @@ import React from "react";
 export const theme = createTheme({
   palette: {
     background: { default: "#FDF8F2", paper: "#FFFFFF" },
-    secondary: { main: alpha("#0F1F7D", 0.9) },
-    primary: { main: alpha("#F27507", 0.9) },
+    secondary: { main: "#273489" },
+    primary: { main: "#DF6F13" },
   },
   typography: {
     fontSize: 16,
@@ -28,6 +28,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           padding: 24,
+          paddingTop: "5vh",
+          paddingBottom: "10vh",
         },
       },
     },
@@ -40,6 +42,7 @@ export const theme = createTheme({
           borderRadius: 24,
           fontWeight: "bold",
           whiteSpace: "nowrap",
+          color: "black",
         },
       },
     },
@@ -57,13 +60,14 @@ export const theme = createTheme({
 type StyledLinkProps = {
   children: React.ReactNode;
   to: string;
+  key?: string;
 };
-export const StyledNavbarLink = styled((props: StyledLinkProps) => <Link {...props} to={props.to} />)`
+export const StyledNavbarLink = styled((props: StyledLinkProps) => <Link {...props} to={props.to} key={props.key} />)`
   color: white;
   text-decoration: none;
 `;
 
-export const StyledFooterLink = styled((props: StyledLinkProps) => <Link {...props} to={props.to} />)`
+export const StyledFooterLink = styled((props: StyledLinkProps) => <Link {...props} to={props.to} key={props.key} />)`
   color: black;
   text-decoration: none;
 `;
