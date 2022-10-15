@@ -16,21 +16,21 @@ const config: GatsbyConfig = {
         trackingId: "G-49SHQFMTXZ",
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sitemap",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/logo.svg",
-      },
-    },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: `${__dirname}/src/images/`,
+        path: `${__dirname}/assets/images`,
+      },
+    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: `${__dirname}/assets/images/logo.svg`,
       },
     },
     {
@@ -71,14 +71,14 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: `${__dirname}/src/assets/`,
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-react-svg",
+    //   options: {
+    //     rule: {
+    //       include: `${__dirname}/src/assets/`,
+    //     },
+    //   },
+    // },
   ],
 };
 
