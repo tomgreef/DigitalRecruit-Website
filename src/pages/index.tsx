@@ -59,12 +59,5 @@ export const query = graphql`
         }
       }
     }
-    navbarImg: file(relativePath: { eq: "logo.svg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
   }
 `;
